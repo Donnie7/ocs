@@ -31,6 +31,7 @@ public class KafkaConsumerService : BackgroundService
         {
             var consumeResult = consumer.Consume(stoppingToken);
             Console.WriteLine(consumeResult.Message.Value);
+            consumer.StoreOffset(consumeResult);
 
             try
             {
@@ -40,7 +41,6 @@ public class KafkaConsumerService : BackgroundService
             {
                 Console.WriteLine(e);
             }
-            consumer.StoreOffset(consumeResult);
         }
         //consumer.Close();
     }

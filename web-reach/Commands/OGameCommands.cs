@@ -16,8 +16,15 @@ public class OGameCommands : SeleniumWebDriver, IOgame
 
     public Task OpenOgame()
     {
-        Driver.Url = OgameURL;
-        
+        try
+        {
+            Driver.Url = OgameURL;
+        }
+        catch (Exception)
+        {
+            Driver = InitDriver();
+            Driver.Url = OgameURL;
+        }
         return Task.CompletedTask;
     }
 

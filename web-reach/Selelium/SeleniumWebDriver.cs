@@ -1,16 +1,20 @@
 ﻿namespace web_reach.Selelium;
 
-using System.Linq.Expressions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 public class SeleniumWebDriver
 {
-    private WebDriverWait Wait { get; }
-    protected ChromeDriver Driver { get; }
-    
+    private WebDriverWait Wait { get; set; }
+    protected ChromeDriver Driver { get; set; }
+
     protected SeleniumWebDriver()
+    {
+        Driver = InitDriver();
+    }
+
+    protected ChromeDriver InitDriver()
     {
         var options = new ChromeOptions();
         options.AddArgument("--disable-blink-features=AutomationControlled");
@@ -20,8 +24,9 @@ public class SeleniumWebDriver
         Driver = new ChromeDriver(options);
         Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
         Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        return Driver;
     }
-    
+
     protected void WaitUntilAvailable(By by)
     {
         for (int i = 0; i < 3; i++)
