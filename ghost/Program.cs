@@ -20,15 +20,7 @@ public class Program
                 {
                     services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
                     services.AddHostedService<KafkaConsumerService>();
-                })
-            .ConfigureAppConfiguration((builderContext, config) =>
-            {
-                var env = builderContext.HostingEnvironment;
-                config
-                    .AddJsonFile("conf/appsettings.json", optional: false, reloadOnChange: true)
-                    .AddJsonFile($"conf/appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                    .AddEnvironmentVariables();
-            });
+                });
 }
 /*
 using OpenQA.Selenium;

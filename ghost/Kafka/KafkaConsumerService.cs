@@ -25,7 +25,7 @@ public class KafkaConsumerService : BackgroundService
             while (true)
             {
                 var consumeResult = consumer.Consume(stoppingToken);
-                Console.WriteLine(consumeResult.Message);
+                Console.WriteLine(consumeResult.Message.Value);
                 
                 // process message here
                 consumer.StoreOffset(consumeResult);
