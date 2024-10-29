@@ -2,26 +2,31 @@ using control_station;
 
 public class StartMenu
 {
-    private readonly IResourcesCommands _commands;
+    private readonly IResourcesCommands _resourcesCommands;
+    private readonly IOgameCommands _ogameCommands;
     
-    public StartMenu(IResourcesCommands commands)
+    public StartMenu(IResourcesCommands resourcesCommands, IOgameCommands ogameCommands)
     {
-        _commands = commands;
+        _resourcesCommands = resourcesCommands;
+        _ogameCommands = ogameCommands;
     }
     
     public async Task RunAsync()
     {
         while (true)
         {
-            Console.WriteLine("Introduza um comando ('exit' para sair):");
+            Console.WriteLine("Introduce command ('exit' to leave):");
             var command = Console.ReadLine();
             if (command == "exit") break;
-            if (command == "1")
+            switch (command)
             {
-                await _commands.UpgradeMetalMine(); continue;
+               case "1": await _ogameCommands.OpenOGame(); continue;
+               case "2": await _ogameCommands.Login(); continue;
+               case "3": await _resourcesCommands.UpgradeMetalMine(); continue;
+               case "4": await _ogameCommands.CloseOGame(); continue;
+                   
             }
-
-            Console.WriteLine($"Comando '{command}' não reconhecido.");
+            Console.WriteLine($"Command '{command}' not recognized.");
         }
     }
 }

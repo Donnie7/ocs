@@ -13,10 +13,11 @@ public class KafkaJsonProducer
         _producer = new ProducerBuilder<string, string>(config).Build();
     }
 
-    public async Task<bool> SendJsonMessageAsync<T>(string topic, T message)
+    //public async Task<bool> SendJsonMessageAsync<T>(string topic, T message)
+    public async Task<bool> SendJsonMessageAsync(string topic, string message)
     {
-        var jsonMessage = JsonConvert.SerializeObject(message);
-        var kafkaMessage = new Message<string, string> {Key = Guid.NewGuid().ToString(), Value = jsonMessage};
+        //var jsonMessage = JsonConvert.SerializeObject(message);
+        var kafkaMessage = new Message<string, string> {Key = Guid.NewGuid().ToString(), Value = message };
 
         try
         {

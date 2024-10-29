@@ -21,7 +21,9 @@ public class Program
         Host.CreateDefaultBuilder(args)
             .ConfigureServices(services =>
             {
-                services.AddSingleton<IResourcesCommands>(new ResourcesCommand(new KafkaJsonProducer("localhost:9092")));
+                var kafkaProducer = new KafkaJsonProducer("localhost:9092");
+                services.AddSingleton<IResourcesCommands>(new ResourcesCommand(kafkaProducer));
+                services.AddSingleton<IOgameCommands>(new OGameCommands(kafkaProducer));
                 services.AddSingleton<StartMenu>();
             });
 }

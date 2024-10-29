@@ -14,4 +14,8 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Selenium.WebDriver" Version="4.25.0" />
+    </ItemGroup>
 </Project>

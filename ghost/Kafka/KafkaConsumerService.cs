@@ -6,8 +6,14 @@ using Microsoft.Extensions.Hosting;
 public class KafkaConsumerService : BackgroundService
 {
     private const string Topic = "command-bus";
+    private readonly IMessageProcessor _messageProcessor;
     
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    public KafkaConsumerService(IMessageProcessor messageProcessor)
+    {
+        _messageProcessor = messageProcessor;
+    }
+    
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var config = new ConsumerConfig
         {
@@ -17,21 +23,25 @@ public class KafkaConsumerService : BackgroundService
             EnableAutoCommit = true
         };
 
-        using (var consumer = new ConsumerBuilder<Ignore, string>(config).Build())
-        {
-            consumer.Subscribe(Topic);
+        using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
+        consumer.Subscribe(Topic);
 
-            //while (!canceled)
-            while (true)
+        //while (!canceled)
+        while (true)
+        {
+            var consumeResult = consumer.Consume(stoppingToken);
+            Console.WriteLine(consumeResult.Message.Value);
+
+            try
             {
-                var consumeResult = consumer.Consume(stoppingToken);
-                Console.WriteLine(consumeResult.Message.Value);
-                
-                // process message here
-                consumer.StoreOffset(consumeResult);
+                await _messageProcessor.Process(consumeResult.Message.Value);
             }
-            
-            //consumer.Close();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            consumer.StoreOffset(consumeResult);
         }
+        //consumer.Close();
     }
 }

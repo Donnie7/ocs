@@ -4,6 +4,8 @@ using Kafka;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using web_reach;
+using web_reach.Commands;
 
 public class Program
 {
@@ -19,20 +21,9 @@ public class Program
             .ConfigureServices(services =>
                 {
                     services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+                    services.AddSingleton<IOgame, OGameCommands>();
+                    services.AddSingleton<IResourcesCommands, ResourcesCommands>();
+                    services.AddSingleton<IMessageProcessor, MessageProcessor>();
                     services.AddHostedService<KafkaConsumerService>();
                 });
 }
-/*
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-var driver = new ChromeDriver();
-driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-driver.Url = "https://lobby.ogame.gameforge.com/pt_PT/";
-var element = driver.FindElement(By.XPath("//*[@id=\"loginRegisterTabs\"]/ul/li[1]"));
-element.Click();
-driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/div[2]/div/input")).SendKeys("alt.mail.16@gmail.com");
-driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/div[3]/div/input")).SendKeys("naosei_534");
-driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/p/button[1]")).Click();
-driver.Quit();
-*/

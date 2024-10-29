@@ -2,22 +2,11 @@
 
 using Kafka;
 
-public class ResourcesCommand : IResourcesCommands
+public class ResourcesCommand(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), IResourcesCommands
 {
-    private const string Topic = "command-bus";
-    private readonly KafkaJsonProducer _producer;
+    public Task UpgradeMetalMine()
+    {
+        return SendCommand("Upgrade Metal Mine");
+    }
 
-    public ResourcesCommand(KafkaJsonProducer kafkaProducer)
-    {
-        _producer = kafkaProducer;
-    }
-    
-    public async Task UpgradeMetalMine()
-    {
-        var success = await _producer.SendJsonMessageAsync(Topic, "Upgrading Metal Mine");
-        if (success)
-        {
-            Console.WriteLine("Command sent: Upgrading Metal Mine");
-        }
-    }
 }
