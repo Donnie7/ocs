@@ -15,18 +15,13 @@ public class MessageProcessor : IMessageProcessor
 
     public Task Process(string message)
     {
-        switch (message)
+        return message switch
         {
-            case "Open OGame":
-                return _ogame.OpenOgame();
-            case "Login":
-                return _ogame.Login();
-            case "Upgrade Metal Mine":
-                return _resourcesCommands.UpgradeMetalMine();
-            case "Close":
-                return _ogame.CloseOGame();
-            default:
-                return Task.CompletedTask;
-        }
+            "Open OGame" => _ogame.OpenOgame(),
+            "Login" => _ogame.Login(),
+            "Upgrade Metal Mine" => _resourcesCommands.UpgradeMetalMine(),
+            "Close Ogame" => _ogame.CloseOGame(),
+            _ => Task.CompletedTask
+        };
     }
 }
