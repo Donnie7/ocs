@@ -23,7 +23,8 @@ public class Program
             {
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
                 services.AddSingleton<IResourcesCommands>(new ResourcesCommand(kafkaProducer));
-                services.AddSingleton<IOgameCommands>(new OGameCommands(kafkaProducer));
+                services.AddSingleton<INavigationCommands>(new NavigationCommands(kafkaProducer));
+                services.AddSingleton<IOgameCommands>(new BrowserCommands(kafkaProducer));
                 services.AddSingleton<StartMenu>();
             });
 }

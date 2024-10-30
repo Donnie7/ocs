@@ -5,7 +5,7 @@ using Selelium;
 
 public class OGameCommands : SeleniumWebDriver, IOgame
 {
-    private const string OgameURL = "https://lobby.ogame.gameforge.com/pt_PT/";
+    private const string OgameUrl = "https://lobby.ogame.gameforge.com/pt_PT/";
     private const string LoginTab = "//*[@id=\"loginRegisterTabs\"]/ul/li[1]";
     private const string Email = "alt.mail.16@gmail.com";
     private const string EmailXPath = "//*[@id=\"loginForm\"]/div[2]/div/input";
@@ -18,12 +18,12 @@ public class OGameCommands : SeleniumWebDriver, IOgame
     {
         try
         {
-            Driver.Url = OgameURL;
+            Driver.Url = OgameUrl;
         }
         catch (Exception)
         {
             Driver = InitDriver();
-            Driver.Url = OgameURL;
+            Driver.Url = OgameUrl;
         }
         return Task.CompletedTask;
     }

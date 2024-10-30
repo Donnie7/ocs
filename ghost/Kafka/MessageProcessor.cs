@@ -1,26 +1,27 @@
 ﻿namespace ghost.Kafka;
 
+using Commands;
+using Commands.Browser;
 using web_reach;
 
 public class MessageProcessor : IMessageProcessor
 {
-    private readonly IOgame _ogame;
-    private readonly IResourcesCommands _resourcesCommands;
+    private readonly IOgame ogame;
+    private readonly IResourcesCommands resourcesCommands;
 
     public MessageProcessor(IOgame ogame, IResourcesCommands resourcesCommands)
     {
-        _ogame = ogame;
-        _resourcesCommands = resourcesCommands;
+        this.ogame = ogame;
+        this.resourcesCommands = resourcesCommands;
     }
 
-    public Task Process(string message)
+    public Task Process(ICommand command)
     {
-        return message switch
+        return command switch
         {
-            "Open OGame" => _ogame.OpenOgame(),
-            "Login" => _ogame.Login(),
-            "Upgrade Metal Mine" => _resourcesCommands.UpgradeMetalMine(),
-            "Close Ogame" => _ogame.CloseOGame(),
+            OpenOGameCommand => ogame.OpenOgame(),
+            LoginCommand => ogame.Login(),
+            CloseOGameCommand => ogame.CloseOGame(),
             _ => Task.CompletedTask
         };
     }

@@ -1,6 +1,8 @@
 ﻿namespace ghost.Kafka;
 
+using Commands;
+
 public interface IMessageProcessor
 {
-    Task Process(string message);
+    Task Process(ICommand command);
 }

@@ -6,19 +6,16 @@
         <RootNamespace>control_station</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PublishSingleFile>true</PublishSingleFile>
-        <SelfContained>true</SelfContained>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Confluent.Kafka" Version="2.6.0" />
       <PackageReference Include="ConsoleMenu-simple" Version="2.7.0" />
       <PackageReference Include="LanguageExt.Core" Version="4.4.9" />
+      <PackageReference Include="MessagePack" Version="2.5.187" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,6 +27,10 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Commands\Commands.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,27 +1,25 @@
 ﻿namespace control_station.Kafka;
 
 using Confluent.Kafka;
-using Newtonsoft.Json;
 
 public class KafkaJsonProducer
 {
-    private readonly IProducer<string, string> _producer;
+    private readonly IProducer<string, byte[]> producer;
 
     public KafkaJsonProducer(string bootstrapServers)
     {
         var config = new ProducerConfig {BootstrapServers = bootstrapServers};
-        _producer = new ProducerBuilder<string, string>(config).Build();
+        producer = new ProducerBuilder<string, byte[]>(config).Build();
     }
 
     //public async Task<bool> SendJsonMessageAsync<T>(string topic, T message)
-    public async Task<bool> SendJsonMessageAsync(string topic, string message)
+    public async Task<bool> SendJsonMessageAsync(string topic, byte[] message)
     {
-        //var jsonMessage = JsonConvert.SerializeObject(message);
-        var kafkaMessage = new Message<string, string> {Key = Guid.NewGuid().ToString(), Value = message };
+        var kafkaMessage = new Message<string, byte[]> {Key = Guid.NewGuid().ToString(), Value = message };
 
         try
         {
-            var deliveryResult = await _producer.ProduceAsync(topic, kafkaMessage);
+            var deliveryResult = await producer.ProduceAsync(topic, kafkaMessage);
             Console.WriteLine($"Message sent to <{deliveryResult.TopicPartitionOffset}>");
             return true;
         }

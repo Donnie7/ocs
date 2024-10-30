@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-reach", "web-reach\web-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control-station", "control-station\control-station.csproj", "{F985ADCE-118F-4697-B320-22AC41CF063F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{E8EE126D-2986-43A7-9B57-EF85953C2099}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F985ADCE-118F-4697-B320-22AC41CF063F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F985ADCE-118F-4697-B320-22AC41CF063F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F985ADCE-118F-4697-B320-22AC41CF063F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8EE126D-2986-43A7-9B57-EF85953C2099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8EE126D-2986-43A7-9B57-EF85953C2099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8EE126D-2986-43A7-9B57-EF85953C2099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8EE126D-2986-43A7-9B57-EF85953C2099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

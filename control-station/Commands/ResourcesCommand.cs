@@ -6,7 +6,8 @@ public class ResourcesCommand(KafkaJsonProducer kafkaProducer) : KafkaCommand(ka
 {
     public Task UpgradeMetalMine()
     {
-        return SendCommand("Upgrade Metal Mine");
+        throw new NotImplementedException();
+        //return SendCommand("Upgrade Metal Mine");
     }
 
 }

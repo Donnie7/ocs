@@ -1,16 +1,18 @@
 ﻿namespace ghost.Kafka;
 
+using Commands;
 using Confluent.Kafka;
+using MessagePack;
 using Microsoft.Extensions.Hosting;
 
 public class KafkaConsumerService : BackgroundService
 {
     private const string Topic = "command-bus";
-    private readonly IMessageProcessor _messageProcessor;
+    private readonly IMessageProcessor messageProcessor;
     
     public KafkaConsumerService(IMessageProcessor messageProcessor)
     {
-        _messageProcessor = messageProcessor;
+        this.messageProcessor = messageProcessor;
     }
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -23,23 +25,23 @@ public class KafkaConsumerService : BackgroundService
             EnableAutoCommit = true
         };
 
-        using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
+        using var consumer = new ConsumerBuilder<Ignore, byte[]>(config).Build();
         consumer.Subscribe(Topic);
 
         //while (!canceled)
         while (true)
         {
             var consumeResult = consumer.Consume(stoppingToken);
-            Console.WriteLine(consumeResult.Message.Value);
             consumer.StoreOffset(consumeResult);
-
+            
             try
             {
-                await _messageProcessor.Process(consumeResult.Message.Value);
+                var command = MessagePackSerializer.Deserialize<ICommand>(consumeResult.Message.Value);
+                await messageProcessor.Process(command);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine($"Error processing message: {e}");
             }
         }
         //consumer.Close();
