@@ -1,6 +1,7 @@
 ﻿namespace control_station.Commands;
 
 using global::Commands.Navigation;
+using Interfaces;
 using Kafka;
 
 public class NavigationCommands(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), INavigationCommands
@@ -62,6 +63,6 @@ public class NavigationCommands(KafkaJsonProducer kafkaProducer) : KafkaCommand(
 
     public Task Alliance()
     {
-        throw new NotImplementedException();
+        return SendCommand(new AllianceCommand());
     }
 }

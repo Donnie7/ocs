@@ -1,20 +1,20 @@
-﻿namespace web_reach.Selelium;
+﻿namespace web_reach.Selenium;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-public class SeleniumWebDriver
+public class SeleniumWebDriver : ISeleniumWebDriver
 {
     private WebDriverWait Wait { get; set; }
     protected ChromeDriver Driver { get; set; }
 
-    protected SeleniumWebDriver()
+    public SeleniumWebDriver()
     {
         Driver = InitDriver();
     }
 
-    protected ChromeDriver InitDriver()
+    public ChromeDriver InitDriver()
     {
         var options = new ChromeOptions();
         options.AddArgument("--disable-blink-features=AutomationControlled");
@@ -27,9 +27,33 @@ public class SeleniumWebDriver
         return Driver;
     }
 
-    protected void WaitUntilAvailable(By by)
+    public Task GoToURL(string url)
     {
-        for (int i = 0; i < 3; i++)
+        Driver.Url = url;
+        return Task.CompletedTask;
+    }
+
+    public Task ClickButton(string buttonXPath)
+    {
+        Driver.FindElement(By.XPath(buttonXPath)).Click();
+        return Task.CompletedTask;
+    }
+
+    public Task SendKeys(string inputXPath, string keys)
+    {
+       Driver.FindElement(By.XPath(inputXPath)).SendKeys(keys);
+        return Task.CompletedTask;
+    }
+
+    public Task CloseOGame()
+    {
+        Driver.Close();
+        return Task.CompletedTask;
+    }
+
+    public Task WaitUntilAvailable(By by)
+    {
+        for (var i = 0; i < 10; i++)
         {
             try
             {
@@ -38,23 +62,25 @@ public class SeleniumWebDriver
                     var element = driver.FindElement(by);
                     return element.Displayed && element.Enabled;
                 });
-                return;
+                return Task.CompletedTask;
             }
             catch (StaleElementReferenceException)
             {
                 Task.Delay(500).Wait();
             }
         }
+
+        throw new Exception("Unable to find element. Timeout expired");
     }
-    
-    protected void SwitchToWindow(string title)
+
+    public Task SwitchToWindow(string title)
     {
         foreach (var handle in Driver.WindowHandles)
         {
             Driver.SwitchTo().Window(handle);
             if (Driver.Title == title)
             {
-                return;
+                return Task.CompletedTask;
             }
         }
 

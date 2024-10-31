@@ -1,6 +1,7 @@
 ﻿namespace control_station.Commands;
 
 using global::Commands.Browser;
+using Interfaces;
 using Kafka;
 
 public class BrowserCommands(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), IOgameCommands

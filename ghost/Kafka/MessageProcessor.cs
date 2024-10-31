@@ -2,26 +2,29 @@
 
 using Commands;
 using Commands.Browser;
-using web_reach;
+using Commands.Navigation;
+using web_reach.Interfaces;
 
 public class MessageProcessor : IMessageProcessor
 {
-    private readonly IOgame ogame;
-    private readonly IResourcesCommands resourcesCommands;
+    private readonly IOgameCommands ogameCommands;
+    private readonly INavigationCommands navigationCommands;
 
-    public MessageProcessor(IOgame ogame, IResourcesCommands resourcesCommands)
+    public MessageProcessor(IOgameCommands ogameCommands, INavigationCommands navigationCommands)
     {
-        this.ogame = ogame;
-        this.resourcesCommands = resourcesCommands;
+        this.ogameCommands = ogameCommands;
+        this.navigationCommands = navigationCommands;
     }
 
     public Task Process(ICommand command)
     {
         return command switch
         {
-            OpenOGameCommand => ogame.OpenOgame(),
-            LoginCommand => ogame.Login(),
-            CloseOGameCommand => ogame.CloseOGame(),
+            OpenOGameCommand => ogameCommands.OpenOgame(),
+            LoginCommand => ogameCommands.Login(),
+            CloseOGameCommand => ogameCommands.CloseOGame(),
+            AllianceCommand => navigationCommands.Alliance(),
+            OverviewCommand => navigationCommands.Overview(),
             _ => Task.CompletedTask
         };
     }

@@ -1,6 +1,6 @@
-﻿namespace web_reach;
+﻿namespace web_reach.Interfaces;
 
-public interface IOgame
+public interface IOgameCommands
 {
     Task OpenOgame();
     Task Login();

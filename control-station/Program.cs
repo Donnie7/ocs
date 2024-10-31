@@ -1,9 +1,12 @@
-﻿using control_station;
-using control_station.Commands;
+﻿using control_station.Commands;
 using control_station.Kafka;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+namespace control_station;
+
+using ConsoleMenu;
+using Interfaces;
 
 public class Program
 {

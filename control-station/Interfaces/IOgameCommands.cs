@@ -1,4 +1,4 @@
-﻿namespace control_station;
+﻿namespace control_station.Interfaces;
 
 public interface IOgameCommands
 {

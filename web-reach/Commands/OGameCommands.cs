@@ -1,9 +1,10 @@
 ﻿namespace web_reach.Commands;
 
+using Interfaces;
 using OpenQA.Selenium;
-using Selelium;
+using Selenium;
 
-public class OGameCommands : SeleniumWebDriver, IOgame
+public class OGameCommands(ISeleniumWebDriver driver) : SeleniumCommand(driver), IOgameCommands
 {
     private const string OgameUrl = "https://lobby.ogame.gameforge.com/pt_PT/";
     private const string LoginTab = "//*[@id=\"loginRegisterTabs\"]/ul/li[1]";
@@ -18,35 +19,34 @@ public class OGameCommands : SeleniumWebDriver, IOgame
     {
         try
         {
-            Driver.Url = OgameUrl;
+            Driver.GoToURL(OgameUrl);
         }
         catch (Exception)
         {
-            Driver = InitDriver();
-            Driver.Url = OgameUrl;
+            Driver.InitDriver();
+            Driver.GoToURL(OgameUrl);
         }
         return Task.CompletedTask;
     }
 
     public Task Login()
     {
-        Driver.FindElement(By.XPath(LoginTab)).Click();
-        Driver.FindElement(By.XPath(EmailXPath)).SendKeys(Email);
-        Driver.FindElement(By.XPath(PasswordXPath)).SendKeys(Password);
-        Driver.FindElement(By.XPath(LoginButtonXPath)).Click();
-        WaitUntilAvailable(By.XPath(LastSession)); 
-        Driver.FindElement(By.XPath(LastSession)).Click();
+        Driver.ClickButton(LoginTab);
+        Driver.SendKeys(EmailXPath, Email);
+        Driver.SendKeys(PasswordXPath, Password);
+        Driver.ClickButton(LoginButtonXPath);
+        Driver.WaitUntilAvailable(By.XPath(LastSession));
+        Driver.ClickButton(LastSession);
 
         // just a test
         Thread.Sleep(10000);
-        SwitchToWindow("Himalia OGame");
-        Driver.FindElement(By.XPath("//*[@id=\"menuTable\"]/li[2]/a")).Click();
+        Driver.SwitchToWindow("Himalia OGame");
         return Task.CompletedTask;
     }
 
     public Task CloseOGame()
     {
-        Driver.Close();
+        Driver.CloseOGame();
         return Task.CompletedTask;
     }
 }
