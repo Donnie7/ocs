@@ -3,7 +3,7 @@
 using Interfaces;
 using Kafka;
 
-public class ResourcesCommand(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), IResourcesCommands
+public class UpgradeResourcesCommand(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), IResourcesCommands
 {
     public Task UpgradeMetalMine()
     {

@@ -1,4 +1,4 @@
-﻿namespace Commands.Navigation;
+﻿namespace busCommands.Navigation;
 
 using MessagePack;
 

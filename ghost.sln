@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-reach", "web-reach\web-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control-station", "control-station\control-station.csproj", "{F985ADCE-118F-4697-B320-22AC41CF063F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{E8EE126D-2986-43A7-9B57-EF85953C2099}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "busCommands", "busCommands\busCommands.csproj", "{E8EE126D-2986-43A7-9B57-EF85953C2099}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

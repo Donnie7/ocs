@@ -30,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Commands\Commands.csproj" />
+      <ProjectReference Include="..\busCommands\busCommands.csproj" />
     </ItemGroup>
 
 </Project>

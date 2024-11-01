@@ -5,8 +5,18 @@ using Selenium;
 
 public class NavigationCommands(ISeleniumWebDriver driver) : SeleniumCommand(driver), INavigationCommands
 {
-    private const string AllianceButton = "//*[@id=\"menuTable\"]/li[12]/a/span";
     private const string OverviewButton = "//*[@id=\"menuTable\"]/li[1]/a/span";
+    private const string ResourcesButton = "//*[@id=\"menuTable\"]/li[2]/a/span";
+    private const string LifeformButton = "//*[@id=\"menuTable\"]/li[3]/a/span";
+    private const string FacilitiesButton = "//*[@id=\"menuTable\"]/li[4]/a/span";
+    private const string MerchantButton = "//*[@id=\"menuTable\"]/li[5]/a/span";
+    private const string ResearchButton = "//*[@id=\"menuTable\"]/li[6]/a/span";
+    private const string ShipyardButton = "//*[@id=\"menuTable\"]/li[7]/a/span";
+    private const string DefenseButton = "//*[@id=\"menuTable\"]/li[8]/a/span";
+    private const string FleetButton = "//*[@id=\"menuTable\"]/li[9]/a/span";
+    private const string GalaxyButton = "//*[@id=\"menuTable\"]/li[10]/a/span";
+    private const string EmpireButton = "//*[@id=\"menuTable\"]/li[11]/a/span";
+    private const string AllianceButton = "//*[@id=\"menuTable\"]/li[12]/a/span";
     
     public Task Alliance()
     {
@@ -16,37 +26,44 @@ public class NavigationCommands(ISeleniumWebDriver driver) : SeleniumCommand(dri
 
     public Task Defense()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(DefenseButton);
+        return Task.CompletedTask;
     }
 
     public Task Empire()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(EmpireButton);
+        return Task.CompletedTask;
     }
 
     public Task Facilities()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(FacilitiesButton);
+        return Task.CompletedTask;
     }
 
     public Task Fleet()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(FleetButton);
+        return Task.CompletedTask;
     }
 
     public Task Galaxy()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(GalaxyButton);
+        return Task.CompletedTask;
     }
 
     public Task Lifeform()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(LifeformButton);
+        return Task.CompletedTask;
     }
 
     public Task Merchant()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(MerchantButton);
+        return Task.CompletedTask;
     }
 
     public Task Overview()
@@ -57,16 +74,19 @@ public class NavigationCommands(ISeleniumWebDriver driver) : SeleniumCommand(dri
 
     public Task Research()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(ResearchButton);
+        return Task.CompletedTask;
     }
 
     public Task Resources()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(ResourcesButton);
+        return Task.CompletedTask;
     }
 
     public Task Shipyard()
     {
-        throw new NotImplementedException();
+        Driver.ClickButton(ShipyardButton);
+        return Task.CompletedTask;
     }
 }

@@ -1,7 +1,7 @@
-﻿namespace Commands;
+﻿namespace busCommands;
 
-using Commands.Browser;
-using Commands.Navigation;
+using Browser;
+using Navigation;
 
 [MessagePack.Union(0, typeof(OpenOGameCommand))]
 [MessagePack.Union(1, typeof(LoginCommand))]

@@ -1,6 +1,6 @@
 ﻿namespace ghost.Kafka;
 
-using Commands;
+using busCommands;
 
 public interface IMessageProcessor
 {

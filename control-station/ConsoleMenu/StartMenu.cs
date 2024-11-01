@@ -17,15 +17,25 @@ public class StartMenu
     public Task RunAsync()
     {
         var browserMenu = new ConsoleMenu()
+            .Add("Go back", ConsoleMenu.Close)
             .Add("Open Ogame", () => ogameCommands.OpenOGame())
             .Add("Login", () => ogameCommands.Login())
-            .Add("Close Ogame", () => ogameCommands.CloseOGame())
-            .Add("Go back", ConsoleMenu.Close);
-        
+            .Add("Close Ogame", () => ogameCommands.CloseOGame());
+
         var navigationMenu = new ConsoleMenu()
+            .Add("Go back", ConsoleMenu.Close)
             .Add("Overview", () => navigationCommands.Overview())
-            .Add("Alliance", () => navigationCommands.Alliance())
-            .Add("Go back", ConsoleMenu.Close);
+            .Add("Resources", () => navigationCommands.Resources())
+            .Add("Lifeform", () => navigationCommands.Lifeform())
+            .Add("Facilities", () => navigationCommands.Facilities())
+            .Add("Merchant", () => navigationCommands.Merchant())
+            .Add("Research", () => navigationCommands.Research())
+            .Add("Shipyard", () => navigationCommands.Shipyard())
+            .Add("Defense", () => navigationCommands.Defense())
+            .Add("Fleet", () => navigationCommands.Fleet())
+            .Add("Galaxy", () => navigationCommands.Galaxy())
+            .Add("Empire", () => navigationCommands.Empire())
+            .Add("Alliance", () => navigationCommands.Alliance());
         
         var mainMenu = new ConsoleMenu()
             .Add("Browser", browserMenu.Show)

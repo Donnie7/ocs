@@ -1,6 +1,6 @@
 ﻿namespace ghost.Kafka;
 
-using Commands;
+using busCommands;
 using Confluent.Kafka;
 using MessagePack;
 using Microsoft.Extensions.Hosting;

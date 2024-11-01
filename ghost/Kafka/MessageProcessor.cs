@@ -1,8 +1,8 @@
 ﻿namespace ghost.Kafka;
 
-using Commands;
-using Commands.Browser;
-using Commands.Navigation;
+using busCommands;
+using busCommands.Browser;
+using busCommands.Navigation;
 using web_reach.Interfaces;
 
 public class MessageProcessor : IMessageProcessor
@@ -23,8 +23,18 @@ public class MessageProcessor : IMessageProcessor
             OpenOGameCommand => ogameCommands.OpenOgame(),
             LoginCommand => ogameCommands.Login(),
             CloseOGameCommand => ogameCommands.CloseOGame(),
-            AllianceCommand => navigationCommands.Alliance(),
             OverviewCommand => navigationCommands.Overview(),
+            ResourcesCommand => navigationCommands.Resources(),
+            LifeformCommand => navigationCommands.Lifeform(),
+            FacilitiesCommand => navigationCommands.Facilities(),
+            MerchantCommand => navigationCommands.Merchant(),
+            ResearchCommand => navigationCommands.Research(),
+            ShipyardCommand => navigationCommands.Shipyard(),
+            DefenseCommand => navigationCommands.Defense(),
+            FleetCommand => navigationCommands.Fleet(),
+            GalaxyCommand => navigationCommands.Galaxy(),
+            EmpireCommand => navigationCommands.Empire(),
+            AllianceCommand => navigationCommands.Alliance(),
             _ => Task.CompletedTask
         };
     }

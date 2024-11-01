@@ -25,7 +25,7 @@ public class Program
             .ConfigureServices(services =>
             {
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
-                services.AddSingleton<IResourcesCommands>(new ResourcesCommand(kafkaProducer));
+                services.AddSingleton<IResourcesCommands>(new UpgradeResourcesCommand(kafkaProducer));
                 services.AddSingleton<INavigationCommands>(new NavigationCommands(kafkaProducer));
                 services.AddSingleton<IOgameCommands>(new BrowserCommands(kafkaProducer));
                 services.AddSingleton<StartMenu>();

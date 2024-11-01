@@ -1,68 +1,32 @@
 ﻿namespace control_station.Commands;
 
-using global::Commands.Navigation;
+using busCommands.Navigation;
 using Interfaces;
 using Kafka;
 
 public class NavigationCommands(KafkaJsonProducer kafkaProducer) : KafkaCommand(kafkaProducer), INavigationCommands
 {
-    public Task Overview()
-    {
-        return SendCommand(new OverviewCommand());
-    }
+    public Task Overview() => SendCommand(new OverviewCommand());
 
-    public Task Resources()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Resources() => SendCommand(new ResourcesCommand());
 
-    public Task Lifeform()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Lifeform() => SendCommand(new LifeformCommand());
 
-    public Task Facilities()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Facilities() => SendCommand(new FacilitiesCommand());
 
-    public Task Merchant()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Merchant() => SendCommand(new MerchantCommand());
 
-    public Task Research()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Research() => SendCommand(new ResearchCommand());
 
-    public Task Shipyard()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Shipyard() => SendCommand(new ShipyardCommand());
 
-    public Task Defense()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Defense() => SendCommand(new DefenseCommand());
 
-    public Task Fleet()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Fleet() => SendCommand(new FleetCommand());
 
-    public Task Galaxy()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Galaxy() => SendCommand(new GalaxyCommand());
 
-    public Task Empire()
-    {
-        throw new NotImplementedException();
-    }
+    public Task Empire() => SendCommand(new EmpireCommand());
 
-    public Task Alliance()
-    {
-        return SendCommand(new AllianceCommand());
-    }
+    public Task Alliance() => SendCommand(new AllianceCommand());
 }

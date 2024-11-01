@@ -1,6 +1,6 @@
 ﻿namespace control_station.Commands;
 
-using global::Commands;
+using busCommands;
 using Kafka;
 using MessagePack;
 
