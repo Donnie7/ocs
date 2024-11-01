@@ -1,4 +1,4 @@
-﻿namespace busCommands.Browser;
+﻿namespace common.Commands.Browser;
 
 using MessagePack;
 

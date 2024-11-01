@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 public class SeleniumWebDriver : ISeleniumWebDriver
 {
     private WebDriverWait Wait { get; set; }
-    protected ChromeDriver Driver { get; set; }
+    private ChromeDriver Driver { get; set; }
 
     public ChromeDriver InitDriver()
     {

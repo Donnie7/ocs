@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\busCommands\busCommands.csproj" />
+      <ProjectReference Include="..\common\common.csproj" />
       <ProjectReference Include="..\web-reach\web-reach.csproj" />
     </ItemGroup>
 </Project>

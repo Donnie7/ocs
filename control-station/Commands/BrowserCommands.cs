@@ -1,6 +1,6 @@
 ﻿namespace control_station.Commands;
 
-using busCommands.Browser;
+using common.Commands.Browser;
 using Interfaces;
 using Kafka;
 

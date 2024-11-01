@@ -1,8 +1,8 @@
 ﻿namespace ghost.Kafka;
 
-using busCommands;
-using busCommands.Browser;
-using busCommands.Navigation;
+using common.Commands;
+using common.Commands.Browser;
+using common.Commands.Navigation;
 using web_reach.Interfaces;
 
 public class MessageProcessor : IMessageProcessor

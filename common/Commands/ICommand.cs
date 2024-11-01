@@ -1,4 +1,4 @@
-﻿namespace busCommands;
+﻿namespace common.Commands;
 
 using Browser;
 using Navigation;
