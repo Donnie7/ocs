@@ -3,7 +3,7 @@
 using Commands;
 using DataMessages;
 
-public interface IKafkaCommandProducer
+public interface IKafkaProducer
 {
     Task SendCommand(ICommand command);
     Task SendCommand(IDataMessage dataMessage);

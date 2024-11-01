@@ -3,39 +3,64 @@
 using common.Kafka.Commands;
 using common.Kafka.Commands.Browser;
 using common.Kafka.Commands.Navigation;
+using Interfaces;
 using web_reach.Interfaces;
 
 public class MessageProcessor : IMessageProcessor
 {
     private readonly IOgameCommands ogameCommands;
     private readonly INavigationCommands navigationCommands;
+    private readonly ITestDataMessage testDataMessage;
 
-    public MessageProcessor(IOgameCommands ogameCommands, INavigationCommands navigationCommands)
+    public MessageProcessor(
+        IOgameCommands ogameCommands,
+        INavigationCommands navigationCommands, 
+        ITestDataMessage testDataMessage)
     {
         this.ogameCommands = ogameCommands;
         this.navigationCommands = navigationCommands;
+        this.testDataMessage = testDataMessage;
     }
 
     public Task Process(ICommand command)
     {
-        return command switch
+        switch (command)
         {
-            OpenOGameCommand => ogameCommands.OpenOgame(),
-            LoginCommand => ogameCommands.Login(),
-            CloseOGameCommand => ogameCommands.CloseOGame(),
-            OverviewCommand => navigationCommands.Overview(),
-            ResourcesCommand => navigationCommands.Resources(),
-            LifeformCommand => navigationCommands.Lifeform(),
-            FacilitiesCommand => navigationCommands.Facilities(),
-            MerchantCommand => navigationCommands.Merchant(),
-            ResearchCommand => navigationCommands.Research(),
-            ShipyardCommand => navigationCommands.Shipyard(),
-            DefenseCommand => navigationCommands.Defense(),
-            FleetCommand => navigationCommands.Fleet(),
-            GalaxyCommand => navigationCommands.Galaxy(),
-            EmpireCommand => navigationCommands.Empire(),
-            AllianceCommand => navigationCommands.Alliance(),
-            _ => Task.CompletedTask
-        };
+            case OpenOGameCommand:
+                testDataMessage.SendTestData(); // remove this.
+                return ogameCommands.OpenOgame();
+            case LoginCommand:
+                testDataMessage.SendTestData(); // remove this.
+                return ogameCommands.Login();
+            case CloseOGameCommand:
+                testDataMessage.SendTestData(); // remove this.
+                return ogameCommands.CloseOGame();
+            case OverviewCommand:
+                return navigationCommands.Overview();
+            case ResourcesCommand:
+                return navigationCommands.Resources();
+            case LifeformCommand:
+                return navigationCommands.Lifeform();
+            case FacilitiesCommand:
+                return navigationCommands.Facilities();
+            case MerchantCommand:
+                return navigationCommands.Merchant();
+            case ResearchCommand:
+                return navigationCommands.Research();
+            case ShipyardCommand:
+                return navigationCommands.Shipyard();
+            case DefenseCommand:
+                return navigationCommands.Defense();
+            case FleetCommand:
+                return navigationCommands.Fleet();
+            case GalaxyCommand:
+                return navigationCommands.Galaxy();
+            case EmpireCommand:
+                return navigationCommands.Empire();
+            case AllianceCommand:
+                return navigationCommands.Alliance();
+            default:
+                return Task.CompletedTask;
+        }
     }
 }

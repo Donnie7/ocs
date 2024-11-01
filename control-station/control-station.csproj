@@ -33,8 +33,4 @@
       <ProjectReference Include="..\common\common.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Kafka\" />
-    </ItemGroup>
-
 </Project>

@@ -3,7 +3,7 @@
 using MessagePack;
 
 [MessagePackObject]
-public class TestDataMessage
+public class TestDataMessage : IDataMessage
 {
     
 }

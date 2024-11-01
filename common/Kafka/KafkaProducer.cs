@@ -4,10 +4,10 @@ using Commands;
 using DataMessages;
 using MessagePack;
 
-public class KafkaCommandProducer(KafkaJsonProducer kafkaProducer) : IKafkaCommandProducer
+public class KafkaProducer(KafkaJsonProducer kafkaProducer) : IKafkaProducer
 {
     private const string CommandBusTopic = "command-bus";
-    private const string DataBusTopic = "command-bus";
+    private const string DataBusTopic = "data-bus";
 
     public async Task SendCommand(ICommand command)
     {

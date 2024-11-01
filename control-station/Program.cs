@@ -1,5 +1,4 @@
-﻿using control_station.Commands;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace control_station;
@@ -7,6 +6,7 @@ namespace control_station;
 using common.Kafka;
 using ConsoleMenu;
 using Interfaces;
+using Kafka.Producer;
 
 public class Program
 {
@@ -16,8 +16,6 @@ public class Program
         
         var startMenu = host.Services.GetRequiredService<StartMenu>();
         await startMenu.RunAsync();
-
-        //await host.RunAsync();
     }
 
     private static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -26,7 +24,7 @@ public class Program
             {
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
                 services.AddSingleton(kafkaProducer);
-                services.AddSingleton<IKafkaCommandProducer, KafkaCommandProducer>();
+                services.AddSingleton<IKafkaProducer, KafkaProducer>();
                 services.AddSingleton<INavigationCommands, NavigationCommandsProducer>();
                 services.AddSingleton<IBrowserCommands, BrowserCommandsProducer>();
                 services.AddSingleton<StartMenu>();

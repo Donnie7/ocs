@@ -4,13 +4,17 @@ using MoodyEye.Kafka;
 
 namespace MoodyEye;
 
+using ConsoleMonitor;
+
 public class Program
 {
     static async Task Main()
     {
         var host = CreateHostBuilder().Build();
 
-        await host.RunAsync();
+        var display = host.Services.GetRequiredService<Display>();
+
+        await display.RunAsync();
     }
 
     public static IHostBuilder CreateHostBuilder() =>
@@ -18,6 +22,7 @@ public class Program
             .ConfigureServices(services =>
             {
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
+                services.AddSingleton<Display>();
                 services.AddHostedService<KafkaConsumerService>();
             });
 }

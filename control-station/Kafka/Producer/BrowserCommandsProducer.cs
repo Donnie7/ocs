@@ -1,4 +1,4 @@
-﻿namespace control_station.Commands;
+﻿namespace control_station.Kafka.Producer;
 
 using common.Kafka;
 using common.Kafka.Commands.Browser;
@@ -6,9 +6,9 @@ using Interfaces;
 
 public class BrowserCommandsProducer :  IBrowserCommands
 {
-    private readonly IKafkaCommandProducer producer;
+    private readonly IKafkaProducer producer;
     
-    public BrowserCommandsProducer(IKafkaCommandProducer producer)
+    public BrowserCommandsProducer(IKafkaProducer producer)
     {
         this.producer = producer;
     }

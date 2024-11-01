@@ -1,6 +1,7 @@
 ﻿namespace ghost;
 
-using Kafka;
+using common.Kafka;
+using Interfaces;
 using Kafka.Consumer;
 using Kafka.Producer;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,10 +23,12 @@ public class Program
         Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
                 services.AddHostedService<KafkaConsumerService>();
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
+                services.AddSingleton(kafkaProducer);
+                services.AddSingleton<IKafkaProducer, KafkaProducer>();
+                services.AddSingleton<ITestDataMessage, TestDataMessageProducer>();
                 //web-reach
                 services.AddSingleton<ISeleniumWebDriver, SeleniumWebDriver>();
                 services.AddSingleton<IOgameCommands, OGameCommands>();
