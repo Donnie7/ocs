@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control-station", "control-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{42007C88-B26A-4F73-8BDA-83368E7252BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodyEye", "MoodyEye\MoodyEye.csproj", "{A05236B6-BF8F-4B79-9989-6FD23460DF62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{42007C88-B26A-4F73-8BDA-83368E7252BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42007C88-B26A-4F73-8BDA-83368E7252BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42007C88-B26A-4F73-8BDA-83368E7252BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05236B6-BF8F-4B79-9989-6FD23460DF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05236B6-BF8F-4B79-9989-6FD23460DF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05236B6-BF8F-4B79-9989-6FD23460DF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05236B6-BF8F-4B79-9989-6FD23460DF62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

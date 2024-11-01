@@ -6,21 +6,21 @@ using ConsoleMenu = ConsoleTools.ConsoleMenu;
 public class StartMenu
 {
     private readonly INavigationCommands navigationCommands;
-    private readonly IOgameCommands ogameCommands;
+    private readonly IBrowserCommands browserCommands;
     
-    public StartMenu(INavigationCommands navigationCommands, IOgameCommands ogameCommands)
+    public StartMenu(INavigationCommands navigationCommands, IBrowserCommands browserCommands)
     {
         this.navigationCommands = navigationCommands;
-        this.ogameCommands = ogameCommands;
+        this.browserCommands = browserCommands;
     }
     
     public Task RunAsync()
     {
         var browserMenu = new ConsoleMenu()
             .Add("Go back", ConsoleMenu.Close)
-            .Add("Open Ogame", () => ogameCommands.OpenOGame())
-            .Add("Login", () => ogameCommands.Login())
-            .Add("Close Ogame", () => ogameCommands.CloseOGame());
+            .Add("Open Ogame", () => browserCommands.OpenOGame())
+            .Add("Login", () => browserCommands.Login())
+            .Add("Close Ogame", () => browserCommands.CloseOGame());
 
         var navigationMenu = new ConsoleMenu()
             .Add("Go back", ConsoleMenu.Close)

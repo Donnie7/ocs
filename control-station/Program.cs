@@ -1,10 +1,10 @@
 ﻿using control_station.Commands;
-using control_station.Kafka;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace control_station;
 
+using common.Kafka;
 using ConsoleMenu;
 using Interfaces;
 
@@ -25,9 +25,10 @@ public class Program
             .ConfigureServices(services =>
             {
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
-                services.AddSingleton<IResourcesCommands>(new UpgradeResourcesCommand(kafkaProducer));
-                services.AddSingleton<INavigationCommands>(new NavigationCommands(kafkaProducer));
-                services.AddSingleton<IOgameCommands>(new BrowserCommands(kafkaProducer));
+                services.AddSingleton(kafkaProducer);
+                services.AddSingleton<IKafkaCommandProducer, KafkaCommandProducer>();
+                services.AddSingleton<INavigationCommands, NavigationCommandsProducer>();
+                services.AddSingleton<IBrowserCommands, BrowserCommandsProducer>();
                 services.AddSingleton<StartMenu>();
             });
 }
