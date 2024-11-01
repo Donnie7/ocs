@@ -9,11 +9,6 @@ public class SeleniumWebDriver : ISeleniumWebDriver
     private WebDriverWait Wait { get; set; }
     protected ChromeDriver Driver { get; set; }
 
-    public SeleniumWebDriver()
-    {
-        Driver = InitDriver();
-    }
-
     public ChromeDriver InitDriver()
     {
         var options = new ChromeOptions();
