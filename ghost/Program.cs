@@ -1,6 +1,7 @@
 ﻿namespace ghost;
 
 using common.Kafka;
+using common.Kafka.Commands;
 using Interfaces;
 using Kafka.Consumer;
 using Kafka.Producer;
@@ -23,6 +24,11 @@ public class Program
         Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
+                services.AddMediatR(config =>
+                {
+                    config.RegisterServicesFromAssemblyContaining<Program>();
+                    config.RegisterServicesFromAssemblyContaining<ICommand>();
+                });
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
                 services.AddHostedService<KafkaConsumerService>();
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
