@@ -1,0 +1,8 @@
+﻿namespace common.Domain.ShipyardTypes;
+
+using Interfaces;
+
+public class LargeCargo : IConstruct
+{
+    public int Quantity { get; set; }
+}
