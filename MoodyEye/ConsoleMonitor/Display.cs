@@ -1,10 +1,11 @@
 ﻿namespace MoodyEye.ConsoleMonitor;
 
+using Microsoft.Extensions.Hosting;
 using Spectre.Console;
 
-public class Display
+public class Display : IHostedService
 {
-    public async Task RunAsync()
+    public Task StartAsync(CancellationToken cancellationToken)
     {
         AnsiConsole.Write(new BarChart()
             .Width(60)
@@ -13,5 +14,11 @@ public class Display
             .AddItem("Apple", 12, Color.Yellow)
             .AddItem("Orange", 54, Color.Green)
             .AddItem("Banana", 33, Color.Red));
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }

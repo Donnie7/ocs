@@ -29,7 +29,7 @@ public class KafkaConsumerService : BackgroundService
         consumer.Subscribe(Topic);
 
         //while (!canceled)
-        while (true)
+        while (!stoppingToken.IsCancellationRequested)
         {
             var consumeResult = consumer.Consume(stoppingToken);
             consumer.StoreOffset(consumeResult);
@@ -44,6 +44,6 @@ public class KafkaConsumerService : BackgroundService
                 Console.WriteLine($"Error processing message: {e}");
             }
         }
-        //consumer.Close();
+        consumer.Close();
     }
 }

@@ -11,10 +11,7 @@ public class Program
     static async Task Main()
     {
         var host = CreateHostBuilder().Build();
-
-        var display = host.Services.GetRequiredService<Display>();
-
-        await display.RunAsync();
+        await host.StartAsync();
     }
 
     public static IHostBuilder CreateHostBuilder() =>
@@ -22,7 +19,7 @@ public class Program
             .ConfigureServices(services =>
             {
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
-                services.AddSingleton<Display>();
+                services.AddHostedService<Display>();
                 services.AddHostedService<KafkaConsumerService>();
             });
 }

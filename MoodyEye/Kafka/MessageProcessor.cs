@@ -4,16 +4,15 @@ using common.Kafka.DataMessages;
 
 public class MessageProcessor : IMessageProcessor
 {
-
-    public MessageProcessor()
-    {
-    }
-
     public Task Process(IDataMessage command)
     {
-        return command switch
+        switch (command)
         {
-            _ => Task.CompletedTask
-        };
+            case TestDataMessage:
+                Console.WriteLine("Test Data Message received");
+                return Task.CompletedTask;
+            default:
+                return Task.CompletedTask;
+        }
     }
 }
