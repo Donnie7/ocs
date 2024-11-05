@@ -1,6 +1,7 @@
 ﻿namespace common.Kafka.Commands.Navigation;
 
+using MediatR;
 using MessagePack;
 
 [MessagePackObject]
-public class FacilitiesCommand : ICommand;
+public class FacilitiesCommand : ICommand, IRequest;

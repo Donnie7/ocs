@@ -4,7 +4,7 @@ using Interfaces;
 using OpenQA.Selenium;
 using Selenium;
 
-public class OGameCommands(ISeleniumWebDriver driver) : SeleniumCommand(driver), IOgameCommands
+public class BrowserCommands(ISeleniumWebDriver driver) : SeleniumCommand(driver), IBrowserCommands
 {
     private const string OgameUrl = "https://lobby.ogame.gameforge.com/pt_PT/";
     private const string LoginTab = "//*[@id=\"loginRegisterTabs\"]/ul/li[1]";

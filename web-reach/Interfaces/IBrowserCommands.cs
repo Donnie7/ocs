@@ -1,6 +1,6 @@
 ﻿namespace web_reach.Interfaces;
 
-public interface IOgameCommands
+public interface IBrowserCommands
 {
     Task OpenOgame();
     Task Login();

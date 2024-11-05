@@ -37,7 +37,7 @@ public class Program
                 services.AddSingleton<ITestDataMessage, TestDataMessageProducer>();
                 //web-reach
                 services.AddSingleton<ISeleniumWebDriver, SeleniumWebDriver>();
-                services.AddSingleton<IOgameCommands, OGameCommands>();
+                services.AddSingleton<IBrowserCommands, BrowserCommands>();
                 services.AddSingleton<INavigationCommands, NavigationCommands>();
             });
 }
