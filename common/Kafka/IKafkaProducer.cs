@@ -6,5 +6,6 @@ using DataMessages;
 public interface IKafkaProducer
 {
     Task SendCommand(ICommand command);
-    Task SendCommand(IDataMessage dataMessage);
+    Task SendData(IDataMessage dataMessage);
+    
 }

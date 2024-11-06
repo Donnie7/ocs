@@ -1,5 +1,6 @@
 ﻿namespace web_reach.Selenium;
 
+using System.Globalization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -44,6 +45,17 @@ public class SeleniumWebDriver : ISeleniumWebDriver
     {
         Driver.Close();
         return Task.CompletedTask;
+    }
+
+    public Task<string> ReadText(string valueXPath)
+    {
+        return Task.FromResult(Driver.FindElement(By.XPath(valueXPath)).Text);
+    }
+
+    public Task<int> ReadInteger(string valueXPath)
+    {
+        var valueText = Driver.FindElement(By.XPath(valueXPath)).Text;
+        return Task.FromResult(int.Parse(valueText, NumberStyles.AllowThousands, CultureInfo.InvariantCulture));
     }
 
     public Task WaitUntilAvailable(By by)

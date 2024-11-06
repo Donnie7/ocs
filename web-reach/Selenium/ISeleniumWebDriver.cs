@@ -12,4 +12,6 @@ public interface ISeleniumWebDriver
     Task ClickButton(string buttonXPath);
     Task SendKeys(string inputXPath, string keys);
     Task CloseOGame();
+    Task<string> ReadText(string valueXPath);
+    Task<int> ReadInteger(string valueXPath);
 }

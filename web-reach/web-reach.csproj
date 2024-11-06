@@ -16,6 +16,11 @@
     </ItemGroup>
     
     <ItemGroup>
+        <PackageReference Include="LanguageExt.Core" Version="4.4.9" />
         <PackageReference Include="Selenium.WebDriver" Version="4.25.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\common\common.csproj" />
     </ItemGroup>
 </Project>

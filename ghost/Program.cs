@@ -1,13 +1,14 @@
 ﻿namespace ghost;
 
+using common.Domain;
 using common.Kafka;
 using common.Kafka.Commands;
-using Interfaces;
 using Kafka.Consumer;
 using Kafka.Producer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using web_reach.Commands;
+using web_reach.DataCollector.Global;
 using web_reach.Interfaces;
 using web_reach.Selenium;
 
@@ -24,20 +25,24 @@ public class Program
         Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddMediatR(config =>
-                {
-                    config.RegisterServicesFromAssemblyContaining<Program>();
-                    config.RegisterServicesFromAssemblyContaining<ICommand>();
-                });
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
                 services.AddHostedService<KafkaConsumerService>();
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
                 services.AddSingleton(kafkaProducer);
                 services.AddSingleton<IKafkaProducer, KafkaProducer>();
-                services.AddSingleton<ITestDataMessage, TestDataMessageProducer>();
+                services.AddSingleton<IMessageProducer, DataCollectorProducer>();
+                services.AddSingleton<GlobalContextCollector>();
+                services.AddSingleton<DataCollectorProducer>();
+                services.AddSingleton<Account>();
                 //web-reach
                 services.AddSingleton<ISeleniumWebDriver, SeleniumWebDriver>();
                 services.AddSingleton<IBrowserCommands, BrowserCommands>();
                 services.AddSingleton<INavigationCommands, NavigationCommands>();
+                
+                services.AddMediatR(config =>
+                {
+                    config.RegisterServicesFromAssemblyContaining<Program>();
+                    config.RegisterServicesFromAssemblyContaining<ICommand>();
+                });
             });
 }

@@ -8,8 +8,9 @@ public class MessageProcessor : IMessageProcessor
     {
         switch (command)
         {
-            case TestDataMessage:
-                Console.WriteLine("Test Data Message received");
+            case GlobalData globalData:
+                Console.WriteLine($"Planet Name: {globalData.PlanetName}");
+                Console.WriteLine($"Metal: {globalData.Metal}");
                 return Task.CompletedTask;
             default:
                 return Task.CompletedTask;

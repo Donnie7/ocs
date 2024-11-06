@@ -7,7 +7,7 @@ public class MessageProcessor : IMessageProcessor
 {
     private readonly IMediator mediator;
 
-    public MessageProcessor( IMediator mediator)
+    public MessageProcessor(IMediator mediator)
     {
         this.mediator = mediator;
     }

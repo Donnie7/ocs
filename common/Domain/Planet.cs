@@ -6,6 +6,14 @@ public class Planet
 {
    public string Name { get; set; }
    public Coordinates Coordinates { get; set; }
+   
+   public int MetalValue { get; set; }
+   public int CrystalValue { get; set; }
+   public int DeuteriumValue { get; set; }
+   public int EnergyValue { get; set; }
+   public int PopulationValue { get; set; }
+   public int FoodValue { get; set; }
+   
    public Resources Resources { get; set; }
    public Lifeform Lifeform { get; set; }
    public Facilities Facilities { get; set; }

@@ -16,7 +16,7 @@ public class KafkaProducer(KafkaJsonProducer kafkaProducer) : IKafkaProducer
         Console.WriteLine(success ? $"Command sent: {command}" : $"Command failed: {command}");
     }
 
-    public async Task SendCommand(IDataMessage dataMessage)
+    public async Task SendData(IDataMessage dataMessage)
     {
         var bin = MessagePackSerializer.Serialize(dataMessage);
         var success = await kafkaProducer.SendJsonMessageAsync(DataBusTopic, bin);
