@@ -4,6 +4,7 @@ using MoodyEye.Kafka;
 
 namespace MoodyEye;
 
+using common.Domain;
 using ConsoleMonitor;
 
 public class Program
@@ -19,6 +20,7 @@ public class Program
             .ConfigureServices(services =>
             {
                 services.AddSingleton<IMessageProcessor, MessageProcessor>();
+                services.AddSingleton<Account>();
                 services.AddHostedService<Display>();
                 services.AddHostedService<KafkaConsumerService>();
             });

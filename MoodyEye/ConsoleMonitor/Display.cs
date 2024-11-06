@@ -1,24 +1,50 @@
 ﻿namespace MoodyEye.ConsoleMonitor;
 
+using common.Domain;
 using Microsoft.Extensions.Hosting;
 using Spectre.Console;
 
-public class Display : IHostedService
+public class Display : BackgroundService
 {
-    public Task StartAsync(CancellationToken cancellationToken)
+    private readonly Account account;
+    private Timer timer;
+
+    public Display(Account account)
     {
-        AnsiConsole.Write(new BarChart()
-            .Width(60)
-            .Label("[green bold underline]Number of fruits[/]")
-            .CenterLabel()
-            .AddItem("Apple", 12, Color.Yellow)
-            .AddItem("Orange", 54, Color.Green)
-            .AddItem("Banana", 33, Color.Red));
+        this.account = account;
+    }
+
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        timer = new Timer(UpdateTable, null, TimeSpan.Zero, TimeSpan.FromSeconds(3));
         return Task.CompletedTask;
     }
 
-    public Task StopAsync(CancellationToken cancellationToken)
+    public override void Dispose()
     {
-        throw new NotImplementedException();
+        timer?.Dispose();
+        base.Dispose();
+    }
+
+    private void UpdateTable(object state)
+    {
+        AnsiConsole.Clear();
+        var table = new Table();
+        table.AddColumn("Metal");
+        table.AddColumn("Crystal");
+        
+        
+        if (account.Planets.Any())
+            table.AddRow(account.Planets.First().MetalValue.ToString(), account.Planets.First().CrystalValue.ToString());
+        
+        
+        AnsiConsole.Live(table)
+            .AutoClear(false)
+            .Overflow(VerticalOverflow.Ellipsis)
+            .Cropping(VerticalOverflowCropping.Bottom)
+            .StartAsync(async ctx =>
+            {
+                ctx.Refresh();
+            });
     }
 }
