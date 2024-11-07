@@ -35,6 +35,11 @@ public partial class Coordinates
         }
     }
 
+    public override string ToString()
+    {
+        return $"{Galaxy}:{System}:{PlanetNumber}";
+    }
+
     [GeneratedRegex(@"\[(\d+):(\d+):(\d+)\]")]
     private static partial Regex CoordinatesRegex();
 }

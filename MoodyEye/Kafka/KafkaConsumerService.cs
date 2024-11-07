@@ -29,7 +29,7 @@ public class KafkaConsumerService : BackgroundService
         consumer.Subscribe(Topic);
 
         //while (!canceled)
-        while (!stoppingToken.IsCancellationRequested)
+        while (true)
         {
             var consumeResult = consumer.Consume(stoppingToken);
             consumer.StoreOffset(consumeResult);

@@ -2,7 +2,11 @@
 
 public class Account
 {
-   public IList<Planet> Planets { get; set; } = new List<Planet>();
+   public IList<Planet> Planets { get; set; } = new List<Planet>
+   {
+      new Planet("0", new Coordinates("[0:0:0]")),
+      new Planet("1", new Coordinates("[0:0:0]")),
+   };
 
    public Planet GetOrCreatePlanet(string planetName, Coordinates coordinates)
    {
