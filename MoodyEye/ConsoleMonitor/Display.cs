@@ -14,10 +14,10 @@ public class Display : BackgroundService
         this.account = account;
     }
 
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        timer = new Timer(UpdateTable, null, TimeSpan.Zero, TimeSpan.FromSeconds(3));
-        return Task.CompletedTask;
+        var table = new Table1(account);
+        await table.DrawTable();
     }
 
     public override void Dispose()
