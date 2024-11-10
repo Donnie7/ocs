@@ -1,0 +1,17 @@
+- Install Kafka UI
+- Add kafka folder to git repo
+- Implement Info Collectors
+   - Resources
+   - Lifeform
+   - Facilities
+   - Research
+   - Shipyard
+   - Defense
+- Implement IUpgrade & IConstruct
+   - Resources
+   - Lifeform
+   - Facilities
+   - Research
+   - Shipyard
+   - Defense
+
