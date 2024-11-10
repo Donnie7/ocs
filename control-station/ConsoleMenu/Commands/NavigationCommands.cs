@@ -1,14 +1,14 @@
-﻿namespace control_station.Kafka.Producer;
+﻿namespace control_station.ConsoleMenu.Commands;
 
 using common.Kafka;
 using common.Kafka.Commands.Navigation;
 using Interfaces;
 
-public class NavigationCommandsProducer : INavigationCommands
+public class NavigationCommands : INavigationCommands
 {
     private readonly IKafkaProducer producer;
     
-    public NavigationCommandsProducer(IKafkaProducer producer)
+    public NavigationCommands(IKafkaProducer producer)
     {
         this.producer = producer;
     }

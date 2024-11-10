@@ -5,8 +5,8 @@ namespace control_station;
 
 using common.Kafka;
 using ConsoleMenu;
+using ConsoleMenu.Commands;
 using Interfaces;
-using Kafka.Producer;
 
 public class Program
 {
@@ -25,8 +25,8 @@ public class Program
                 var kafkaProducer = new KafkaJsonProducer("localhost:9092");
                 services.AddSingleton(kafkaProducer);
                 services.AddSingleton<IKafkaProducer, KafkaProducer>();
-                services.AddSingleton<INavigationCommands, NavigationCommandsProducer>();
-                services.AddSingleton<IBrowserCommands, BrowserCommandsProducer>();
+                services.AddSingleton<INavigationCommands, NavigationCommands>();
+                services.AddSingleton<IBrowserCommands, BrowserCommands>();
                 services.AddSingleton<StartMenu>();
             });
 }
