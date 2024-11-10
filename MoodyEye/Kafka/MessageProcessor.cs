@@ -18,7 +18,7 @@ public class MessageProcessor : IMessageProcessor
         switch (command)
         {
             case GlobalData globalData:
-                GlobalDataFiller.PopulateAccount(account, globalData);
+                GlobalDataFiller.UpdateAccount(account, globalData);
                 return Task.CompletedTask;
             default:
                 return Task.CompletedTask;

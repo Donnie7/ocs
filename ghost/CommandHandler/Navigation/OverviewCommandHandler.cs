@@ -10,28 +10,28 @@ using web_reach.Interfaces;
 
 public class OverviewCommandHandler : IRequestHandler<OverviewCommand>
 {
-    private readonly INavigationCommands navigationCommands;
+    private readonly INavigationCommands navigateTo;
     private readonly Account account;
-    private readonly GlobalContextCollector globalContextCollector;
-    private readonly DataCollectorProducer dataCollectorProducer;
+    private readonly GlobalContextCollector globalCollector;
+    private readonly DataCollectorProducer dataCollector;
 
     public OverviewCommandHandler(
-        INavigationCommands navigationCommands,
+        INavigationCommands navigateTo,
         Account account,
-        GlobalContextCollector globalContextCollector,
-        DataCollectorProducer dataCollectorProducer)
+        GlobalContextCollector globalCollector,
+        DataCollectorProducer dataCollector)
     {
-        this.navigationCommands = navigationCommands;
+        this.navigateTo = navigateTo;
         this.account = account;
-        this.globalContextCollector = globalContextCollector;
-        this.dataCollectorProducer = dataCollectorProducer;
+        this.globalCollector = globalCollector;
+        this.dataCollector = dataCollector;
     }
     
     public async Task Handle(OverviewCommand request, CancellationToken cancellationToken)
     {
-        await navigationCommands.Overview();
-        var data = await globalContextCollector.Collect();
-        GlobalDataFiller.PopulateAccount(account, data);
-        await dataCollectorProducer.SendOverview(data);
+        await navigateTo.Overview();
+        var overviewData = await globalCollector.Collect();
+        GlobalDataFiller.UpdateAccount(account, overviewData);
+        await dataCollector.SendCollectedData(overviewData);
     }
 }

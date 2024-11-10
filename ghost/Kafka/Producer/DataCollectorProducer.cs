@@ -12,5 +12,5 @@ public class DataCollectorProducer : IMessageProducer
         this.producer = producer;
     }
 
-    public Task SendOverview(GlobalData globalData) => producer.SendData(globalData);
+    public Task SendCollectedData(GlobalData globalData) => producer.SendData(globalData);
 }

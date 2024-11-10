@@ -5,7 +5,7 @@ using Kafka.DataMessages;
 
 public class GlobalDataFiller
 {
-    public static void PopulateAccount(Account account, GlobalData data)
+    public static void UpdateAccount(Account account, GlobalData data)
     {
         var collectedPlanet = account.GetOrCreatePlanet(
             data.PlanetName, data.Coordinates);

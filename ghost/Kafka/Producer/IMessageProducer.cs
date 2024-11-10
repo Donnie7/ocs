@@ -4,5 +4,5 @@ using common.Kafka.DataMessages;
 
 public interface IMessageProducer
 {
-    Task SendOverview(GlobalData globalData);
+    Task SendCollectedData(GlobalData globalData);
 }
