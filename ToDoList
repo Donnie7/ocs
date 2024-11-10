@@ -1,6 +1,6 @@
 - Install Kafka UI
 - Add kafka folder to git repo
-- Implement Info Collectors
+- Implement Info Collectors (1)
    - Resources
    - Lifeform
    - Facilities
@@ -14,4 +14,5 @@
    - Research
    - Shipyard
    - Defense
-
+- Add IUpgrade & IConstruct to control-station menus
+- Display new info collectors in MoodyEye (1)
