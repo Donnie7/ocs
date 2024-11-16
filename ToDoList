@@ -16,3 +16,5 @@
 - Add IUpgrade & IConstruct to control-station menus
 - Display new info collectors in MoodyEye (1)
 - I think GlobalData no longer needs to be a MessagePackObject
+- Overview collector should read the plant name and coords from the overview table and not the clickable planets.
+- Split the overview collector into Planet stuff and resources stuff. The point here is to have a collector of resources that can be reused in other collectors.
