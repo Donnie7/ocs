@@ -5,6 +5,8 @@ using Interfaces;
 public class ResearchLab : IUpgrade
 {
     public int Level { get; set; }
+    public bool IsUpgrading { get; set; }
+
     public Task UpgradeLevel()
     {
         throw new NotImplementedException();
