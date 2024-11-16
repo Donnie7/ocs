@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class GravitonTechnology : IUpgrade
+public class GravitonTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

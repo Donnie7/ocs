@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class HyperspaceTechnology : IUpgrade
+public class HyperspaceTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

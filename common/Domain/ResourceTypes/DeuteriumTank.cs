@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class DeuteriumTank : IUpgrade
+public class DeuteriumTank : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

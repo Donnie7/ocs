@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class SolarPlant : IUpgrade
+public class SolarPlant : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

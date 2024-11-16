@@ -15,3 +15,4 @@
    - Defense
 - Add IUpgrade & IConstruct to control-station menus
 - Display new info collectors in MoodyEye (1)
+- I think GlobalData no longer needs to be a MessagePackObject

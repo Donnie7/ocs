@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class Shipyard : IUpgrade
+public class Shipyard : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

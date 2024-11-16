@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class EspionageTechnology : IUpgrade
+public class EspionageTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

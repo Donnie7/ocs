@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class CrystalStorage : IUpgrade
+public class CrystalStorage : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class NeuroCalibrationCentre : IUpgrade
+public class NeuroCalibrationCentre : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

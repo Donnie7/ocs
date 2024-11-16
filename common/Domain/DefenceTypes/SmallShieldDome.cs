@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class SmallShieldDome : IUpgrade
+public class SmallShieldDome : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

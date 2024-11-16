@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class MissileSilo : IUpgrade
+public class MissileSilo : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class HyperspaceDrive : IUpgrade
+public class HyperspaceDrive : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

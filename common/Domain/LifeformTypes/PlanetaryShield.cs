@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class PlanetaryShield : IUpgrade
+public class PlanetaryShield : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

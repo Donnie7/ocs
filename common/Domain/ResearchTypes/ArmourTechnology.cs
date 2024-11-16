@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class ArmourTechnology : IUpgrade
+public class ArmourTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

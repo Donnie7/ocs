@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class MetalMine : IUpgrade
+public class MetalMine : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

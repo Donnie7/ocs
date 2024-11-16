@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class PlasmaTechnology : IUpgrade
+public class PlasmaTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

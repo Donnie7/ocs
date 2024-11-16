@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class FoodSilo : IUpgrade
+public class FoodSilo : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

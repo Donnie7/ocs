@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class Astrophysics : IUpgrade
+public class Astrophysics : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

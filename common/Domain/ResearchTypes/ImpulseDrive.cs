@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class ImpulseDrive : IUpgrade
+public class ImpulseDrive : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

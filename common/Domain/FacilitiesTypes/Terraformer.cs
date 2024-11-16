@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class Terraformer : IUpgrade
+public class Terraformer : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

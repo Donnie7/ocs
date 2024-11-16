@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class ComputerTechnology : IUpgrade
+public class ComputerTechnology : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

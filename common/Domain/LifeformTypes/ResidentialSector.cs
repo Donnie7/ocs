@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class ResidentialSector : IUpgrade
+public class ResidentialSector : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

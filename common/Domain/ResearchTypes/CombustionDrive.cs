@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class CombustionDrive : IUpgrade
+public class CombustionDrive : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

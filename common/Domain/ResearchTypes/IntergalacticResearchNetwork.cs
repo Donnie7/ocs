@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class IntergalacticResearchNetwork : IUpgrade
+public class IntergalacticResearchNetwork : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }

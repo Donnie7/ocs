@@ -2,7 +2,7 @@
 
 using Interfaces;
 
-public class SpaceDock : IUpgrade
+public class SpaceDock : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
     public bool IsUpgrading { get; set; }
