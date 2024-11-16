@@ -18,3 +18,9 @@
 - I think GlobalData no longer needs to be a MessagePackObject
 - Overview collector should read the plant name and coords from the overview table and not the clickable planets.
 - Split the overview collector into Planet stuff and resources stuff. The point here is to have a collector of resources that can be reused in other collectors.
+
+
+NEXT:
+I am in the middle of ResourceCollectors. I did the MetalMine and Crystal mine and it still needs the rest.
+Also the MoodyEye isn't yet able to receive the collected messages that ghost is creating when navidating.
+Also the ResourcesCommandHandler will have a lot of collectors in the constructor. Find a way to have just a collector with Generics and then collect different resources inside the handler.
