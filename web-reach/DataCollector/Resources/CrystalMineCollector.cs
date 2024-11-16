@@ -1,0 +1,18 @@
+﻿namespace web_reach.DataCollector.Resources;
+
+using Commands;
+using common.Kafka.DataMessages.Resources;
+using Selenium;
+
+public class CrystalMineCollector(ISeleniumWebDriver driver) : SeleniumCommand(driver), IDataCollector<CrystalMineData>
+{
+    private const string CurrentLevelXPath = "//*[@id=\"producers\"]/li[2]/span/span[1]/span[1]";
+    private const string IsUpgradingXPath = "//*[@id=\"producers\"]/li[2]/span/span[1]";
+
+    public async Task<CrystalMineData> Collect() =>
+        new()
+        {
+            Level = await Driver.ReadInteger(CurrentLevelXPath),
+            IsUpgrading = await Driver.IsPresent(IsUpgradingXPath),
+        };
+}

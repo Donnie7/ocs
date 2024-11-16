@@ -14,4 +14,5 @@ public interface ISeleniumWebDriver
     Task CloseOGame();
     Task<string> ReadText(string valueXPath);
     Task<int> ReadInteger(string valueXPath);
+    Task<bool> IsPresent(string valueXPath);
 }
