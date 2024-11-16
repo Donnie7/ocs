@@ -2,9 +2,11 @@
 
 using Interfaces;
 
-public class DeutheriumSynthesizer : IUpgrade
+public class DeutheriumSynthesizer : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
+    public bool IsUpgrading { get; set; }
+
     public Task UpgradeLevel()
     {
         throw new NotImplementedException();

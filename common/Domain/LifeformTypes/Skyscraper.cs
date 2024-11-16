@@ -2,9 +2,11 @@
 
 using Interfaces;
 
-public class Skyscraper : IUpgrade
+public class Skyscraper : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
+    public bool IsUpgrading { get; set; }
+
     public Task UpgradeLevel()
     {
         throw new NotImplementedException();

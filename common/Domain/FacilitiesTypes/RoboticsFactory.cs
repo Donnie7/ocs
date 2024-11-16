@@ -2,9 +2,11 @@
 
 using Interfaces;
 
-public class RoboticsFactory : IUpgrade
+public class RoboticsFactory : IUpgrade, IUpgradable
 {
     public int Level { get; set; }
+    public bool IsUpgrading { get; set; }
+
     public Task UpgradeLevel()
     {
         throw new NotImplementedException();

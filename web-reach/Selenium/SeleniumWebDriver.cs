@@ -58,6 +58,12 @@ public class SeleniumWebDriver : ISeleniumWebDriver
         return Task.FromResult(int.Parse(valueText, NumberStyles.AllowThousands, CultureInfo.InvariantCulture));
     }
 
+    public Task<bool> IsPresent(string valueXPath)
+    {
+        var element = Driver.FindElement(By.XPath(valueXPath));
+        return Task.FromResult(element is not null);
+    }
+
     public Task WaitUntilAvailable(By by)
     {
         for (var i = 0; i < 10; i++)

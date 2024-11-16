@@ -5,7 +5,7 @@ using common.Domain;
 using common.Kafka.DataMessages;
 using Selenium;
 
-public class GlobalContextCollector(ISeleniumWebDriver driver) : SeleniumCommand(driver)
+public class GlobalContextCollector(ISeleniumWebDriver driver) : SeleniumCommand(driver), IDataCollector<GlobalData>
 {
    private const string PlanetNameXPath = "//*[@id=\"planet-33664279\"]/a/span[1]";
    private const string CoordinatesXPath = "//*[@id=\"planet-33664279\"]/a/span[2]";
