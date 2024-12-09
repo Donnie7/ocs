@@ -1,6 +1,6 @@
 - Install Kafka UI
 - Implement Info Collectors (1)
-   - Resources
+   - Resources - DONE
    - Lifeform
    - Facilities
    - Research
@@ -15,3 +15,12 @@
    - Defense
 - Add IUpgrade & IConstruct to control-station menus
 - Display new info collectors in MoodyEye (1)
+- I think GlobalData no longer needs to be a MessagePackObject
+- Overview collector should read the plant name and coords from the overview table and not the clickable planets.
+- Split the overview collector into Planet stuff and resources stuff. The point here is to have a collector of resources that can be reused in other collectors.
+
+
+NEXT:
+Implement the Lifeform collectors. To get the IsUpgradingXPath, either upgrade the Residential Sector or compare with the already implemented resource collectors how it is the xpath pattern.Carefull, may be different for Lifeform menus.
+The MoodyEye isn't yet able to receive the collected messages that ghost is creating when navidating.
+Also the ResourcesCommandHandler will have a lot of collectors in the constructor. Find a way to have just a collector with Generics and then collect different resources inside the handler.
