@@ -1,6 +1,6 @@
 - Install Kafka UI
 - Implement Info Collectors (1)
-   - Resources
+   - Resources - DONE
    - Lifeform
    - Facilities
    - Research
@@ -21,6 +21,6 @@
 
 
 NEXT:
-I am in the middle of ResourceCollectors. I did the MetalMine and Crystal mine and it still needs the rest.
-Also the MoodyEye isn't yet able to receive the collected messages that ghost is creating when navidating.
+Implement the Lifeform collectors. To get the IsUpgradingXPath, either upgrade the Residential Sector or compare with the already implemented resource collectors how it is the xpath pattern.Carefull, may be different for Lifeform menus.
+The MoodyEye isn't yet able to receive the collected messages that ghost is creating when navidating.
 Also the ResourcesCommandHandler will have a lot of collectors in the constructor. Find a way to have just a collector with Generics and then collect different resources inside the handler.
